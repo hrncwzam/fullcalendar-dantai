@@ -1,0 +1,41 @@
+h1 {
+  text-align: center;
+}
+
+
+td.fc-day-sat {
+  background-color: #e0f0ff; /* 青系 */
+}
+
+td.fc-day-sun {
+  background-color: #ffe0e0; /* 赤系 */
+}
+
+td.fc-day-holiday {
+  background-color: #ffe4b5; /* 明るいオレンジ系（Moccasin） */
+}
+
+.fc-day-past {
+  background-color: #f0f0f0; /* 薄いグレー */
+  opacity: 0.4;              /* 少し透過で網掛け風 */
+}
+
+
+.fc-event-past.fc-list-event {
+  background-color: #f0f0f0; /* 薄いグレー */
+  opacity: 0.4;              /* 少し透過で網掛け風 */
+}
+
+
+.fc-custom-event {
+  /*font-size: 12px;*/
+  line-height: 1.3;
+  padding: 2px;
+  white-space: normal; /* ← これが重要 */
+  word-break: break-word; /* 長い単語も折り返す */
+}
+
+.fc-custom-event div {
+  white-space: normal;
+  word-break: break-word;
+}
