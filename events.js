@@ -8,7 +8,7 @@ function getCacheBusterKey() {
 
 async function loadEvents() {
     const cacheKey = getCacheBusterKey();
-    const response = await fetch('./events.json?cd=${cacheKey}');
+    const response = await fetch(`./events.json?cd=${cacheKey}`);
     if(!response.ok) {
         console.error('Failed to load events.json',response.status);
         return [];
