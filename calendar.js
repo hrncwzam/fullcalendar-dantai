@@ -26,20 +26,25 @@ document.addEventListener('DOMContentLoaded', async function() {
             center: 'title',
             right: 'dayGridMonth,listMonth'
         },
-        viewDidMount: function(info) {
-            const start = info.view.currentStart;
-            const end = new Date(info.view.currentEnd.getTime() - 1); // 終了日の1日前
+        datesSet: function(info) {
+            const start = info.start;
+            const end = new Date(info.end.getTime() - 1); // 終了日の1日前
 
-            const year = start.getFullYear();
+            const startYear = start.getFullYear();    
+            const endYear = end.getFullYear();
             const startMonth = start.getMonth() + 1;
             const endMonth = end.getMonth() + 1;
 
-            const customTitle = `${year} ${startMonth}-${endMonth}`;
+            const customTitle = startYear === endYear
+                ? `${startYear} ${startMonth}-${endMonth}`
+                : `${startYear} ${startMonth} - ${endYear} ${endMonth}`;
+
             const titleEl = document.querySelector('.fc-toolbar-title');
             if (titleEl) {
                 titleEl.textContent = customTitle;
             }
         },
+
         dayCellDidMount: function(info) {
             const date = info.date;
             // 祝日判定 → クラス追加のみ（祝日名は表示しない）
