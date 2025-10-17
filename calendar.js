@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         initialView: 'dayGridMonth',
         views:{
             dayGridMonth:{
-                buttonText: 'calendar',
+                buttonText: 'cal',
                 duration: { months: 2 },
                 dateIncrement: { months: 1 }
             },
@@ -22,9 +22,23 @@ document.addEventListener('DOMContentLoaded', async function() {
         contentHeight: 'auto', // または数値で指定: 600
         height: 'auto',
         headerToolbar: {
-            left: 'prev,next today',
+            left: 'prev,next',
             center: 'title',
             right: 'dayGridMonth,listMonth'
+        },
+        viewDidMount: function(info) {
+            const start = info.view.currentStart;
+            const end = new Date(info.view.currentEnd.getTime() - 1); // 終了日の1日前
+
+            const year = start.getFullYear();
+            const startMonth = start.getMonth() + 1;
+            const endMonth = end.getMonth() + 1;
+
+            const customTitle = `${year} ${startMonth}-${endMonth}`;
+            const titleEl = document.querySelector('.fc-toolbar-title');
+            if (titleEl) {
+                titleEl.textContent = customTitle;
+            }
         },
         dayCellDidMount: function(info) {
             const date = info.date;
